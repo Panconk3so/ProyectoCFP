@@ -1,8 +1,81 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿<html lang="es">
+<head>
+    
+    <title>Bienvenido al Centro de Salud Mental</title>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido al Centro de Salud Mental</h1>
+        <p>Tu bienestar emocional es nuestra prioridad</p>
+    </header>
+    
+    <section id="informacion">
+        <h2>Quiénes Somos</h2>
+        <p>El Centro de Salud Mental es un lugar dedicado a proporcionar apoyo y tratamiento profesional para mejorar la salud mental de nuestros pacientes. Nuestro equipo de psicólogos y terapeutas altamente capacitados está aquí para ayudarte en tu viaje hacia una vida más saludable y equilibrada.</p>
+    </section>
+    
+    <section id="imagenes">
+        <h2>Galería de Imágenes</h2>
+        <div class="imagen">
+            <img src="imagen1.jpg" alt="Consultorio">
+            <p>Consultorio de Terapia</p>
+        </div>
+        <div class="imagen">
+            <img src="imagen2.jpg" alt="Equipo de Profesionales">
+            <p>Nuestro Equipo de Profesionales</p>
+        </div>
+        <div class="imagen">
+            <img src="imagen3.jpg" alt="Terapia en Grupo">
+            <p>Terapia en Grupo</p>
+        </div>
+    </section>
+    
+    
+</body>
+</html>
+
+<style>
+
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+section {
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* Estilos para las imágenes */
+.imagen {
+    margin: 20px;
+    text-align: center;
+}
+
+.imagen img {
+    max-width: 100%;
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+   
+}
+</style>

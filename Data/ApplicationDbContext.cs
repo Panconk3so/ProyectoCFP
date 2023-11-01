@@ -13,5 +13,6 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<RegistrarCita> DataRegistrarCita {get;set;}
+    public DbSet<Carrito> DataCarrito {get;set;}
 
 }
