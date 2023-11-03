@@ -1,66 +1,55 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Registrarse";
 }
 
-<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/register.css">
 
-<div class="row">
-    <div class="col-md-4">
+<body>
+<div class="container w-75 mt-5 rounded shadow">
+    <div class="row align-items-stretch">
+        <div class="col bgr d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
+
+        </div>
+
+        <!-- Icono -->
+        <div class="col bg-white p-5 rounded-end">
+            <div class="text-center">
+                <img src="https://media.discordapp.net/attachments/1169762805902221397/1169786747115282542/CFP_Tab.png?ex=6556abce&is=654436ce&hm=e9d1b9c43f357d5ed006f4a49077902a956cb0a3dc2712404ac7a24579474b0b&=&width=254&height=110" width="220" alt="">
+            </div>
+
+            <h2 class="fw-bold text-center py-5 tfb">!Se parte de nuestros beneficios CFP!</h2>
+
+        <!-- Register -->
+        <section>
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
+                <label asp-for="Input.Email" class="tf">Correo Electrónico</label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
+                <label asp-for="Input.Password" class="tf">Contraseña</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <label asp-for="Input.ConfirmPassword" class="tf">Confirmar Contraseña</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-danger">Registrarse</button>
         </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
+        <p>
+
+        </p>
+        <p>© 2023 CFP Salud Mental. Todos los derechos reservados.</p>
+    </section>
     </div>
 </div>
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

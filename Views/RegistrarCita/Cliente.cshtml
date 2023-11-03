@@ -1,6 +1,6 @@
 @model List<ProyectoCFP.Models.RegistrarCita>
 
-<h2>Lista de Citas</h2>
+<h2>Lista de Pacientes</h2>
 
 <p>
     <a asp-action="Crear" class="btn btn-success">Crear Nueva Cita</a>
@@ -13,8 +13,7 @@
             <th>Dni</th>
             <th>Nombre</th>
             <th>Apellido Paterno</th>
-            <th>Especialidad </th>
-            <th>Precio </th>
+            <th>Fecha Cita Deseada </th>
             <!-- Agrega aquí las otras columnas que quieras mostrar -->
         </tr>
     </thead>
@@ -26,8 +25,7 @@
                 <td>@cita.DNI</td>
                 <td>@cita.Nombre</td>
                 <td>@cita.ApellidoPaterno</td>
-                <td>@cita.Especialidad </td>
-                 <td>@cita.Precio </td>
+                <td>@cita.FechaCitaDeseada </td>
                 <!-- Agrega aquí las otras columnas que quieras mostrar -->
             </tr>
         }

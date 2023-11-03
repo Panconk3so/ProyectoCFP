@@ -29,7 +29,15 @@ namespace ProyectoCFP.Controllers
             _signInManager = signInManager;
         }
 
+
+
         public IActionResult Index()
+        {
+            var citas = _context.DataRegistrarCita.ToList();
+            return View(citas);
+        }
+
+        public IActionResult Cliente()
         {
             var citas = _context.DataRegistrarCita.ToList();
             return View(citas);
@@ -41,40 +49,54 @@ namespace ProyectoCFP.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crear(RegistrarCita registrarcita)
+public IActionResult Crear(RegistrarCita registrarcita)
+{
+    if (User.Identity.IsAuthenticated)
+    {
+        // Calcula el precio basado en la especialidad seleccionada
+        if (!string.IsNullOrEmpty(registrarcita.Especialidad))
         {
-            if (User.Identity.IsAuthenticated)
+            decimal precioBase = 0; // Define el precio base
+            switch (registrarcita.Especialidad)
             {
-                // El usuario está autenticado, procede a guardar el registro
-                if (ModelState.IsValid)
-                {
-                    // Asegura que la fecha de nacimiento esté en formato UTC
-                    if (registrarcita.FechaNacimiento.Kind != DateTimeKind.Utc)
-                    {
-                        registrarcita.FechaNacimiento = registrarcita.FechaNacimiento.ToUniversalTime();
-                    }
+                case "Trastorno":
+                    precioBase = 100; // Precio para Trastorno
+                    break;
+                case "Estres":
+                    precioBase = 80; // Precio para Estrés
+                    break;
+                case "Terapia":
+                    precioBase = 120; // Precio para Terapia
+                    break;
+                // Agrega más casos según tus especialidades
+            }
 
-                    _context.DataRegistrarCita.Add(registrarcita);
-                    _context.SaveChanges();
-                    return RedirectToAction("Crear");
-                }
-                return View(registrarcita);
-            }
-            else
-            {
-                // El usuario no está autenticado, muestra una notificación
-                TempData["Message"] = "Debe iniciar sesión para registrar una cita.";
-                return RedirectToAction("Crear");
-            }
+            // Asigna el precio calculado
+            registrarcita.Precio = precioBase;
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        if (ModelState.IsValid)
         {
-            return View("Error!");
+            // Asegura que la fecha de nacimiento esté en formato UTC
+            if (registrarcita.FechaNacimiento.Kind != DateTimeKind.Utc)
+            {
+                registrarcita.FechaNacimiento = registrarcita.FechaNacimiento.ToUniversalTime();
+            }
+
+            _context.DataRegistrarCita.Add(registrarcita);
+            _context.SaveChanges();
+            return RedirectToAction("Crear");
         }
+        return View(registrarcita);
+    }
+    else
+    {
+        // El usuario no está autenticado, muestra una notificación
+        TempData["Message"] = "Debe iniciar sesión para registrar una cita.";
+        return RedirectToAction("Crear");
     }
 }
+    }}
 
 
 
